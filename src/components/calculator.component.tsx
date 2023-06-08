@@ -4,8 +4,8 @@ import {Button, ButtonGroup, Col, Row} from "react-bootstrap";
 import React, {ChangeEvent, useState} from "react";
 
 function Calculator() {
-    const [firstValue, setFirstValue] = useState(0);
-    const [secondValue, setSecondValue] = useState(0);
+    const [firstValue, setFirstValue] = useState('');
+    const [secondValue, setSecondValue] = useState('');
     const [result, setResult] = useState(0);
 
     function handleSubmit(event: any) {
@@ -13,15 +13,20 @@ function Calculator() {
     }
 
     function handleAddition() {
-        setResult(firstValue + secondValue);
+        setResult(+firstValue + +secondValue);
     }
 
     function handleSubtraction() {
-        setResult(firstValue - secondValue);
+        setResult(+firstValue - +secondValue);
     }
 
     function handleMultiplication() {
-        setResult(firstValue * secondValue);
+        setResult(+firstValue * +secondValue);
+    }
+    function handleDivision() {
+        if (+secondValue !== 0) {
+            setResult(+firstValue / +secondValue);
+        }
     }
 
     return (
@@ -44,7 +49,7 @@ function Calculator() {
                                         >
                                             <Form.Control type="number" name="firstValue" value={firstValue}
                                                           onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                              setFirstValue(+event.target.value)
+                                                              setFirstValue(event.target.value)
                                                           }}
                                                           placeholder="0.00"/>
                                         </FloatingLabel>
@@ -58,7 +63,7 @@ function Calculator() {
                                     >
                                         <Form.Control type="number" name="secondValue" value={secondValue}
                                                       onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                          setSecondValue(+event.target.value)
+                                                          setSecondValue(event.target.value)
                                                       }}
                                                       placeholder="0.00"/>
                                     </FloatingLabel>
@@ -73,6 +78,7 @@ function Calculator() {
                                 <Button variant="secondary" name="addition" onClick={handleAddition}>+</Button>
                                 <Button variant="secondary" onClick={handleSubtraction}>-</Button>
                                 <Button variant="secondary" onClick={handleMultiplication}>X</Button>
+                                <Button variant="secondary" onClick={handleDivision}>/</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>
