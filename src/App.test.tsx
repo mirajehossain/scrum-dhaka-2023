@@ -53,3 +53,18 @@ test('performs multiplication correctly', () => {
 
   expect(resultElement).toHaveTextContent('Result 24');
 });
+
+test('performs division correctly', () => {
+  render(<Calculator />);
+
+  const firstValueInput = screen.getByLabelText('Enter the first value');
+  const secondValueInput = screen.getByLabelText('Enter the second value');
+  const multiplyButton = screen.getByText('/');
+  const resultElement = screen.getByText('Result 0');
+
+  fireEvent.change(firstValueInput, { target: { value: '20' } });
+  fireEvent.change(secondValueInput, { target: { value: '2' } });
+  fireEvent.click(multiplyButton);
+
+  expect(resultElement).toHaveTextContent('Result 10');
+});
