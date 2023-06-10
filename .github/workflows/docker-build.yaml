@@ -23,6 +23,7 @@ jobs:
 
   deployment-docker-build:
     runs-on: ubuntu-latest
+    needs: run-test-suits
     steps:
       -
         name: Set up QEMU
