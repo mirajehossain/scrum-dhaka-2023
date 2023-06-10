@@ -57,7 +57,7 @@ function Calculator() {
             </Form>
 
             <Row className="justify-content-center">
-                <ButtonGroup size="lg">
+                <ButtonGroup size="lg" className="w-50">
                     <Button variant="secondary" onClick={handleAddition}>
                         +
                     </Button>
