@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import {Button, ButtonGroup, Col, Container, FloatingLabel, Form, Row} from 'react-bootstrap';
+import {Button, ButtonGroup, Col, Container, Form, Row} from 'react-bootstrap';
 
 function Calculator() {
     const [firstValue, setFirstValue] = useState('');
